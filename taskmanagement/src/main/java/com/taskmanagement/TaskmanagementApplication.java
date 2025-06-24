@@ -1,4 +1,4 @@
-package com.taskmanagement.controller;
+package com.taskmanagement;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
