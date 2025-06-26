@@ -1,5 +1,7 @@
 package com.taskmanagement.controller;
 
+import com.taskmanagement.dto.TaskDTO;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import com.taskmanagement.model.Task;
@@ -18,23 +20,23 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<Task> getAll() {
+    public List<TaskDTO> getAll() {
         return service.getAllTasks();
     }
 
     @GetMapping("/{id}")
-    public Task getById(@PathVariable Long id) {
+    public TaskDTO getById(@PathVariable Long id) {
         return service.getTask(id);
     }
 
     @PostMapping
-    public Task create(@RequestBody Task task) {
-        return service.createTask(task);
+    public TaskDTO create(@RequestBody @Valid TaskDTO taskDTO) {
+        return service.createTask(taskDTO);
     }
 
     @PutMapping("{id}")
-    public Task update(@PathVariable Long id, @RequestBody Task task) {
-        return service.updateTask(id, task);
+    public TaskDTO update(@PathVariable Long id, @RequestBody @Valid TaskDTO taskDTO) {
+        return service.updateTask(id, taskDTO);
     }
 
     @DeleteMapping("{id}")
